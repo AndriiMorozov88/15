@@ -5,7 +5,7 @@
   }
 
   body {
-    background-color: #8D230F;
+    background-color: #8b4f43;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -21,9 +21,17 @@
 
   .game-element {
     font-size: 70px;
-    cursor: pointer;
   }
 
   .game-element--possible {
-    background-color: #C2B1D2;
+    background-color: #c2bcc8;
+    cursor: pointer;
+  }
+
+  .game-element--possible:hover {
+    background-color: #ac7edf;
+  }
+
+  .game-element--null {
+    background-color: rgb(213, 208, 213);
   }
