@@ -21,8 +21,9 @@
 
   .game-element {
     font-size: 70px;
+    cursor: pointer;
   }
 
-  .game-element:hover {
-    background-color: #A4BFB9;
+  .game-element--possible {
+    background-color: #C2B1D2;
   }
