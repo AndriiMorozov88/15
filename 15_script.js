@@ -2,16 +2,16 @@ const gameFieldArray = new Array(15);
 const gameField = document.querySelector('[data-game-field]');
 gameFieldArray[0] = null;
 function showArray() {
-    for (let j = 0; j < 16; j++) {
-        document.getElementById(j).innerHTML = gameFieldArray[j];
+    for (let count = 0; count < 16; count++) {
+        document.getElementById(count).innerHTML = gameFieldArray[count];
     }
 }
-for (let i = 0; i < 16; i++) {
-    if (i !== 0) { gameFieldArray[i] = i };
+for (let count = 0; count < 16; count++) {
+    if (count !== 0) { gameFieldArray[count] = count };
     const gameElement = document.createElement('button');
     gameField.append(gameElement);
     gameElement.classList.add('game-element');
-    gameElement.id = i;
+    gameElement.id = count;
     gameElement.addEventListener('click', () => {
         translateArray(gameElement.id);
         showArray()
