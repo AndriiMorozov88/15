@@ -1,5 +1,8 @@
 const gameFieldArray = new Array(15);
 const gameField = document.querySelector('[data-game-field]');
+const stepParagraph = document.querySelector('[data-step-amount]');
+let stepAmount = 0;
+stepParagraph.innerHTML = `Steps: ${stepAmount}`;
 gameFieldArray[0] = null;
 function showPossibleTurn(index) {
     const possibleTurnArray = [[1, 4], [0, 2, 5], [1, 3, 6], [2, 7], [0, 5, 8], [1, 4, 6, 9], [2, 5, 7, 10], [3, 6, 11], [4, 9, 12], [5, 8, 10, 13], [6, 9, 11, 14], [7, 10, 15], [8, 13], [9, 12, 14], [10, 13, 15], [11, 14]];
@@ -29,9 +32,17 @@ for (let count = 0; count < 16; count++) {
     gameElement.addEventListener('click', () => {
         if (gameElement.classList.contains('game-element--possible')) {;
             translateArray(gameElement.id);
+            stepAmount ++;
+            stepParagraph.innerHTML = `Steps: ${stepAmount}`;
             showArray();
         }
     })
 }
 gameFieldArray.sort((a, b) => Math.random() - .5);
 showArray();
+document.querySelector('[data-new-game]').addEventListener('click', () => {
+    let newGame = confirm('Are you sure?');
+    if (newGame) {
+        location.reload();
+    }
+});
