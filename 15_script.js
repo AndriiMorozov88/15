@@ -1,6 +1,8 @@
-const gameFieldArray = new Array(15);
+const gameFieldArray = new Array(16);
+const gameFieldArrayWin = new Array(16)
 const gameField = document.querySelector('[data-game-field]');
 const stepParagraph = document.querySelector('[data-step-amount]');
+const win = document.querySelector('[data-win]');
 let stepAmount = 0;
 stepParagraph.innerHTML = `Steps: ${stepAmount}`;
 gameFieldArray[0] = null;
@@ -19,12 +21,16 @@ function showArray() {
         document.getElementById(indexNull).classList.add('game-element--null');
     });
 };
+function checkWinCombination() {
+    return gameFieldArray.toString() === gameFieldArrayWin.toString();
+}
 function translateArray(index) {
     indexElement = index;
-    [gameFieldArray[indexElement], gameFieldArray[indexNull]] = [gameFieldArray[indexNull], gameFieldArray[indexElement]];  
+    [gameFieldArray[indexElement], gameFieldArray[indexNull]] = [gameFieldArray[indexNull], gameFieldArray[indexElement]];
 };
 for (let count = 0; count < 16; count++) {
     if (count !== 0) { gameFieldArray[count] = count };
+    gameFieldArrayWin[count] = count + 1;
     const gameElement = document.createElement('button');
     gameField.append(gameElement);
     gameElement.classList.add('game-element');
@@ -35,10 +41,14 @@ for (let count = 0; count < 16; count++) {
             stepAmount ++;
             stepParagraph.innerHTML = `Steps: ${stepAmount}`;
             showArray();
+            if (checkWinCombination()) {
+                win.classList.remove('game-state__paragraph--invisible');
+            }
         };
-    });
+    })
 };
 gameFieldArray.sort((a, b) => Math.random() - .5);
+gameFieldArrayWin[15] = null;
 showArray();
 document.querySelector('[data-new-game]').addEventListener('click', () => {
     let newGame = confirm('Are you sure?');
@@ -46,4 +56,3 @@ document.querySelector('[data-new-game]').addEventListener('click', () => {
         location.reload();
     };
 });
-
