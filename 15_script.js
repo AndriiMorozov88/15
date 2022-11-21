@@ -3,6 +3,8 @@ const gameFieldArrayWin = new Array(16)
 const gameField = document.querySelector('[data-game-field]');
 const stepParagraph = document.querySelector('[data-step-amount]');
 const win = document.querySelector('[data-win]');
+const newGameButton = document.querySelector('[data-new-game]');
+const startButton = document.querySelector('[data-start]');
 let stepAmount = 0;
 stepParagraph.innerHTML = `Steps: ${stepAmount}`;
 gameFieldArray[0] = null;
@@ -28,6 +30,10 @@ function translateArray(index) {
     indexElement = index;
     [gameFieldArray[indexElement], gameFieldArray[indexNull]] = [gameFieldArray[indexNull], gameFieldArray[indexElement]];
 };
+function start() {
+    console.log('start');
+    startButton.removeEventListener('click', start);
+}
 for (let count = 0; count < 16; count++) {
     if (count !== 0) { gameFieldArray[count] = count };
     gameFieldArrayWin[count] = count + 1;
@@ -50,7 +56,8 @@ for (let count = 0; count < 16; count++) {
 gameFieldArray.sort((a, b) => Math.random() - .5);
 gameFieldArrayWin[15] = null;
 showArray();
-document.querySelector('[data-new-game]').addEventListener('click', () => {
+startButton.addEventListener('click', start);
+newGameButton.addEventListener('click', () => {
     let newGame = confirm('Are you sure?');
     if (newGame) {
         location.reload();
