@@ -5,7 +5,7 @@
   }
 
   body {
-    background-color: #8b4f43;
+    background-color: hwb(138 9% 25%);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -70,6 +70,6 @@
   }
 
   .button__new-game {
-    background-color: #12D453;
-    color: #FFF;  
+    background-color: hsl(59, 84%, 45%);
+    color: #000;  
   }
