@@ -35,6 +35,7 @@ function translateArray(index) {
 };
 function startGame() {
     startTime = new Date();
+    startButton.classList.remove('button__start');
     start = true;
     startButton.removeEventListener('click', startGame);
 }
@@ -56,7 +57,20 @@ for (let count = 0; count < 16; count++) {
                 finishTime = new Date;
                 console.log(finishTime - startTime);
             }
-        };
+        } else if (start !== true) {
+            let flashColor = [
+                {backgroundColor: '#FFF'},
+                {backgroundColor: '#F00'},
+            ] 
+            let flashCount = {
+                duration: 100,
+                iterations: 4 
+            }
+            startButton.animate(
+                flashColor,
+                flashCount
+            )
+        }
     })
 };
 gameFieldArray.sort((a, b) => Math.random() - .5);
