@@ -5,8 +5,6 @@ const stepParagraph = document.querySelector('[data-step-amount]');
 const win = document.querySelector('[data-win]');
 const newGameButton = document.querySelector('[data-new-game]');
 const startButton = document.querySelector('[data-start]');
-let startTime;
-let finishTime;
 let start = false;
 let stepAmount = 0;
 stepParagraph.innerHTML = `Steps: ${stepAmount}`;
@@ -34,7 +32,6 @@ function translateArray(index) {
     [gameFieldArray[indexElement], gameFieldArray[indexNull]] = [gameFieldArray[indexNull], gameFieldArray[indexElement]];
 };
 function startGame() {
-    startTime = new Date();
     startButton.classList.remove('button__start');
     start = true;
     startButton.removeEventListener('click', startGame);
@@ -54,10 +51,9 @@ for (let count = 0; count < 16; count++) {
             showArray();
             if (checkWinCombination()) {
                 win.classList.remove('game-state__paragraph--invisible');
-                finishTime = new Date;
-                console.log(finishTime - startTime);
+                start = null;
             }
-        } else if (start !== true) {
+        } else if (start === false) {
             let flashColor = [
                 {backgroundColor: '#FFF'},
                 {backgroundColor: '#F00'},
@@ -78,8 +74,10 @@ gameFieldArrayWin[15] = null;
 showArray();
 startButton.addEventListener('click', startGame);
 newGameButton.addEventListener('click', () => {
-    let newGame = confirm('Are you sure?');
-    if (newGame) {
-        location.reload();
-    };
+    if (start !== null) {
+        let newGame = confirm('Are you sure?');
+        if (newGame) {
+            location.reload();
+        };
+    } else {location.reload()}
 });
