@@ -110,3 +110,15 @@
       font-size: 60px;
     }
   }
+
+  @media (max-width: 300px) {
+
+    .game-field {
+      grid-template-rows: repeat(4, 65px);
+      grid-template-columns: repeat(4, 65px);
+    }
+
+    .game-element {
+      font-size: 50px;
+    }
+  }
