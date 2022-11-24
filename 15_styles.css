@@ -5,7 +5,7 @@
   }
 
   body {
-    background-color: hwb(138 9% 25%);
+    background-color: #17BF49;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -47,16 +47,16 @@
   }
 
   .game-element--possible {
-    background-color: #c2bcc8;
+    background-color: #C2BCC8;
     cursor: pointer;
   }
 
   .game-element--possible:hover {
-    background-color: #ac7edf;
+    background-color: #AC7EDF;
   }
 
   .game-element--null {
-    background-color: rgb(213, 208, 213);
+    background-color: #D5D0D5;
   }
 
   .button {
@@ -70,7 +70,7 @@
   }
 
   .button__new-game {
-    background-color: hsl(59, 84%, 45%);
+    background-color: #D3D012;
     color: #000;  
   }
 
